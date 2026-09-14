@@ -1,0 +1,17 @@
+# Java / Maven
+target/
+*.class
+*.jar
+
+# Node
+node_modules/
+dist/
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# Variables de entorno
+.env
+application-local.properties
