@@ -37,6 +37,10 @@ public class Propiedad {
 
     private LocalDate fechaInicioContrato;
 
+    private Boolean destacada = false;
+
+    private String categoria; // "Casa", "Departamento", "Terreno", "Duplex", "Local"
+
     @OneToMany(mappedBy = "propiedad", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("orden ASC")
     private List<Foto> fotos = new ArrayList<>();
@@ -64,6 +68,12 @@ public class Propiedad {
 
     public LocalDate getFechaInicioContrato() { return fechaInicioContrato; }
     public void setFechaInicioContrato(LocalDate fechaInicioContrato) { this.fechaInicioContrato = fechaInicioContrato; }
+
+    public Boolean getDestacada() { return destacada; }
+    public void setDestacada(Boolean destacada) { this.destacada = destacada; }
+
+    public String getCategoria() { return categoria; }
+    public void setCategoria(String categoria) { this.categoria = categoria; }
 
     public List<Foto> getFotos() { return fotos; }
     public void setFotos(List<Foto> fotos) { this.fotos = fotos; }

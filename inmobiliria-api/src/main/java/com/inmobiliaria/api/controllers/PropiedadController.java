@@ -26,14 +26,20 @@ public class PropiedadController {
     // GET /api/propiedades?tipo=Alquiler&ubicacion=tandil → ambos
     @GetMapping
     public List<Propiedad> listar(
-            @RequestParam(required = false) String tipo,
-            @RequestParam(required = false) String ubicacion) {
+        @RequestParam(required = false) String tipo,
+        @RequestParam(required = false) String categoria,
+        @RequestParam(required = false) String ubicacion,
+        @RequestParam(required = false) Double precioMin,
+        @RequestParam(required = false) Double precioMax,
+        @RequestParam(required = false) Boolean destacada) {
 
-        // Si no se pasan parámetros, devuelve todas
-        if (tipo == null && ubicacion == null) {
+        if (destacada != null && destacada) {
+            return propiedadRepository.findByDestacadaTrue();
+        }
+        if (tipo == null && categoria == null && ubicacion == null && precioMin == null && precioMax == null) {
             return propiedadRepository.findAll();
         }
-        return propiedadRepository.buscar(tipo, ubicacion);
+        return propiedadRepository.buscar(tipo, categoria, ubicacion, precioMin, precioMax);
     }
 
     // GET /api/propiedades/{id} → una propiedad con sus fotos
@@ -66,6 +72,7 @@ public class PropiedadController {
             p.setUbicacion(datos.getUbicacion());
             p.setIndiceActualizacion(datos.getIndiceActualizacion());
             p.setFechaInicioContrato(datos.getFechaInicioContrato());
+            p.setDestacada(datos.getDestacada());
             return ResponseEntity.ok(propiedadRepository.save(p));
         }).orElse(ResponseEntity.notFound().build());
     }
@@ -87,5 +94,11 @@ public class PropiedadController {
         alquileres.forEach(p -> p.setPrecio(p.getPrecio() * (1 + porcentaje / 100)));
         propiedadRepository.saveAll(alquileres);
         return ResponseEntity.ok("Precios actualizados: " + alquileres.size() + " propiedades");
+    }
+
+    // GET /api/propiedades/destacadas → propiedades destacadas para el home
+    @GetMapping("/destacadas")
+    public List<Propiedad> destacadas() {
+        return propiedadRepository.findByDestacadaTrue();
     }
 }

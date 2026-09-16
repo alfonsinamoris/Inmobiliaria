@@ -13,10 +13,17 @@ public interface PropiedadRepository extends JpaRepository<Propiedad, Long> {
 
     List<Propiedad> findByTipoIgnoreCase(String tipo);
 
-    // Búsqueda combinada: filtra por tipo y/o ubicación, ambos opcionales
+    List<Propiedad> findByDestacadaTrue();
+
     @Query("SELECT p FROM Propiedad p WHERE " +
-            "(:tipo IS NULL OR LOWER(p.tipo) = LOWER(:tipo)) AND " +
-            "(:ubicacion IS NULL OR LOWER(p.ubicacion) LIKE LOWER(CONCAT('%', :ubicacion, '%')))")
+        "(:tipo IS NULL OR LOWER(p.tipo) = LOWER(:tipo)) AND " +
+        "(:categoria IS NULL OR LOWER(p.categoria) = LOWER(:categoria)) AND " +
+        "(:ubicacion IS NULL OR LOWER(p.ubicacion) LIKE LOWER(CONCAT('%', :ubicacion, '%'))) AND " +
+        "(:precioMin IS NULL OR p.precio >= :precioMin) AND " +
+        "(:precioMax IS NULL OR p.precio <= :precioMax)")
     List<Propiedad> buscar(@Param("tipo") String tipo,
-                           @Param("ubicacion") String ubicacion);
+                           @Param("categoria") String categoria,
+                           @Param("ubicacion") String ubicacion,
+                           @Param("precioMin") Double precioMin,
+                           @Param("precioMax") Double precioMax);
 }
