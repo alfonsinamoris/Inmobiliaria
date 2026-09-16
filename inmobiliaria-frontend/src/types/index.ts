@@ -1,42 +1,43 @@
-// Refleja la entidad Foto del backend
 export interface Foto {
     id: number;
     url: string;
     orden: number;
 }
 
-// Refleja la entidad Propiedad del backend
 export interface Propiedad {
     id: number;
     titulo: string;
     descripcion: string;
     precio: number;
     tipo: 'Alquiler' | 'Venta';
+    categoria?: string;         // ← nuevo
     ubicacion: string;
+    destacada: boolean;
     indiceActualizacion?: 'IPC' | 'ICL';
     fechaInicioContrato?: string;
     fotos: Foto[];
 }
 
-// Para crear o editar una propiedad (sin id ni fotos)
 export interface PropiedadForm {
     titulo: string;
     descripcion: string;
     precio: number | '';
     tipo: 'Alquiler' | 'Venta' | '';
+    categoria?: string;         // ← nuevo
     ubicacion: string;
-    indiceActualizacion?: 'IPC' | 'ICL' | '';
-    fechaInicioContrato?: string;
+    destacada: boolean;
 }
 
-// Respuesta del login
 export interface LoginResponse {
     token: string;
     username: string;
 }
 
-// Filtros para buscar propiedades
 export interface FiltrosPropiedades {
     tipo?: string;
+    categoria?: string;         // ← nuevo
     ubicacion?: string;
+    precioMin?: number;         // ← nuevo
+    precioMax?: number;         // ← nuevo
+    destacada?: boolean;
 }

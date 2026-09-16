@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useNavigate, useParams, Link } from 'react-router-dom';
-import { getPropiedad, crearPropiedad, actualizarPropiedad } from '../../api/Propiedades';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { actualizarPropiedad, crearPropiedad, getPropiedad } from '../../api/Propiedades';
+import GaleriaFotos from '../../components/GaleriaFotos';
 import { useAuth } from '../../context/AuthContext';
 import type { PropiedadForm } from '../../types';
-import GaleriaFotos from '../../components/GaleriaFotos';
 
 const FORM_INICIAL: PropiedadForm = {
     titulo: '',
@@ -11,8 +11,7 @@ const FORM_INICIAL: PropiedadForm = {
     precio: '',
     tipo: '',
     ubicacion: '',
-    indiceActualizacion: '',
-    fechaInicioContrato: '',
+    destacada: false,
 };
 
 export default function FormularioPropiedad() {
@@ -35,8 +34,8 @@ export default function FormularioPropiedad() {
                     precio: p.precio,
                     tipo: p.tipo,
                     ubicacion: p.ubicacion,
-                    indiceActualizacion: p.indiceActualizacion || '',
-                    fechaInicioContrato: p.fechaInicioContrato || '',
+                    destacada: p.destacada ?? false,
+                    categoria: p.categoria || '',
                 });
                 setFotosIniciales(p.fotos ?? []);
             });
@@ -45,6 +44,10 @@ export default function FormularioPropiedad() {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    };
+
+    const handleToggleDestacada = () => {
+        setForm(prev => ({ ...prev, destacada: !prev.destacada }));
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -91,7 +94,6 @@ export default function FormularioPropiedad() {
             <div className="container mx-auto px-4 py-8">
                 <div className="max-w-2xl mx-auto">
 
-                    {/* Breadcrumb */}
                     <Link to="/admin/dashboard" className="text-gray-500 text-sm hover:text-[#2c3e50] transition-all mb-6 inline-block">
                         ← Volver al panel
                     </Link>
@@ -134,6 +136,17 @@ export default function FormularioPropiedad() {
                                             <option value="Venta">Venta</option>
                                         </select>
                                     </div>
+                                    <div>
+                                        <label className={labelClass}>Tipo de propiedad</label>
+                                        <select name="categoria" value={form.categoria || ''} onChange={handleChange} className={inputClass}>
+                                            <option value="">Seleccionar...</option>
+                                            <option value="Casa">Casa</option>
+                                            <option value="Departamento">Departamento</option>
+                                            <option value="Terreno">Terreno</option>
+                                            <option value="Duplex">Duplex</option>
+                                            <option value="Local">Local</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
 
@@ -147,29 +160,37 @@ export default function FormularioPropiedad() {
                                 </div>
                             </div>
 
-                            {/* Actualización — solo si tipo = Alquiler */}
-                            {form.tipo === 'Alquiler' && (
-                                <div>
-                                    <p className={sectionLabel}>Actualización de alquiler</p>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div>
-                                            <label className={labelClass}>Índice de actualización</label>
-                                            <select name="indiceActualizacion" value={form.indiceActualizacion} onChange={handleChange} className={inputClass}>
-                                                <option value="">Seleccionar...</option>
-                                                <option value="IPC">IPC</option>
-                                                <option value="ICL">ICL</option>
-                                            </select>
-                                        </div>
-                                        <div>
-                                            <label className={labelClass}>Fecha inicio contrato</label>
-                                            <input name="fechaInicioContrato" type="date" value={form.fechaInicioContrato}
-                                                   onChange={handleChange} className={inputClass} />
-                                        </div>
+                            {/* Destacada */}
+                            <div>
+                                <p className={sectionLabel}>Visibilidad</p>
+                                <button
+                                    type="button"
+                                    onClick={handleToggleDestacada}
+                                    className={`flex items-center gap-3 w-full p-4 rounded-xl border-2 transition-all ${
+                                        form.destacada
+                                            ? 'border-[#2c3e50] bg-[#2c3e50]/5'
+                                            : 'border-gray-200 hover:border-gray-300'
+                                    }`}>
+                                    {/* Toggle visual */}
+                                    <div className={`w-10 h-6 rounded-full transition-all relative ${
+                                        form.destacada ? 'bg-[#2c3e50]' : 'bg-gray-200'
+                                    }`}>
+                                        <div className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow transition-all ${
+                                            form.destacada ? 'left-5' : 'left-1'
+                                        }`} />
                                     </div>
-                                </div>
-                            )}
+                                    <div className="text-left">
+                                        <p className={`text-sm font-semibold ${form.destacada ? 'text-[#2c3e50]' : 'text-gray-500'}`}>
+                                            {form.destacada ? '⭐ Propiedad destacada' : 'Marcar como destacada'}
+                                        </p>
+                                        <p className="text-xs text-gray-400 mt-0.5">
+                                            Las propiedades destacadas aparecen en la página principal
+                                        </p>
+                                    </div>
+                                </button>
+                            </div>
 
-                            {/* Fotos — solo disponible al editar una propiedad existente */}
+                            {/* Fotos — solo al editar */}
                             {esEdicion && (
                                 <div>
                                     <p className={sectionLabel}>Fotos de la propiedad</p>
