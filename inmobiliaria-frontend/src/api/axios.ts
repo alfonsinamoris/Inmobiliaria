@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: '/api',  // ← en vez de http://localhost:8080/api
+    baseURL: 'https://inmobiliaria-production-1148.up.railway.app',  
     headers: { 'Content-Type': 'application/json' },
 });
 
