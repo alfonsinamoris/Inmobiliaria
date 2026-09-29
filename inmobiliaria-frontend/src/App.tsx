@@ -1,16 +1,17 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 
 // Páginas públicas
-import Home from './pages/publica/Home';
-import Propiedades from './pages/publica/Propiedades';
-import DetallePropiedad from './pages/publica/DetallePropiedad';
 import Contacto from './pages/publica/Contacto';
+import DetallePropiedad from './pages/publica/DetallePropiedad';
+import Home from './pages/publica/Home';
+import SobreNosotros from './pages/publica/Nosotros';
+import Propiedades from './pages/publica/Propiedades';
 
 // Páginas admin
-import Login from './pages/admin/Login';
 import Dashboard from './pages/admin/Dashboard';
 import FormularioPropiedad from './pages/admin/FormularioPropiedad';
+import Login from './pages/admin/Login';
 
 // Componente que protege rutas admin
 function RutaProtegida({ children }: { children: React.ReactNode }) {
@@ -27,6 +28,7 @@ function AppRoutes() {
             <Route path="/propiedades" element={<Propiedades />} />
             <Route path="/propiedades/:id" element={<DetallePropiedad />} />
             <Route path="/contacto" element={<Contacto />} />
+            <Route path="/nosotros" element={<SobreNosotros />} />
 
             {/* Auth */}
             <Route path="/login" element={<Login />} />

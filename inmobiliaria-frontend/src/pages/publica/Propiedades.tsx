@@ -57,57 +57,78 @@ export default function Propiedades() {
 
     const hayFiltros = Object.keys(filtros).length > 0;
 
-    const selectClass = "border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#495057] focus:ring-2 focus:ring-[#2c3e50]/10 w-full";
-    const inputClass = "border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#495057] focus:ring-2 focus:ring-[#2c3e50]/10 w-full";
-    const labelClass = "text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block";
+    const selectClass = "w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-3.5 py-3 focus:outline-none focus:border-[#c5a059] focus:ring-1 focus:ring-[#c5a059] transition-all";
+    const inputClass = "w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-3.5 py-3 focus:outline-none focus:border-[#c5a059] focus:ring-1 focus:ring-[#c5a059] transition-all placeholder:text-slate-400";
+    const labelClass = "block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1.5";
 
     return (
-        <div className="flex flex-col min-h-screen bg-[#f4f7f6]">
+        <div className="flex flex-col min-h-screen bg-[#f8fafc] text-slate-800 font-sans antialiased selection:bg-[#c5a059] selection:text-white">
             <Navbar />
 
-            {/* Header */}
-            <div className="text-white text-center py-16 relative"
-                 style={{
-                     background: 'linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1350&q=80) center/cover',
-                 }}>
-                <h1 className="text-4xl font-bold uppercase tracking-widest mb-2" style={{ fontFamily: 'Oswald, sans-serif' }}>
-                    Propiedades
-                </h1>
-                <p className="opacity-80 text-sm">Encontrá tu próxima propiedad en Tandil y zona</p>
+            {/* HEADER HERO */}
+            <div
+                className="relative py-24 text-center text-white bg-cover bg-center"
+                style={{
+                    backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.78) 0%, rgba(15, 23, 42, 0.90) 100%), url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=2000&q=80')`,
+                }}
+            >
+                <div className="container mx-auto px-4 max-w-4xl relative z-10">
+                    <span className="text-xs uppercase tracking-widest text-[#e6ca91] font-semibold block mb-3">
+                        Cartera Exclusiva en Tandil
+                    </span>
+                    <h1 className="text-4xl sm:text-5xl font-serif font-normal tracking-tight mb-4">
+                        PROPIEDADES DISPONIBLES
+                    </h1>
+                    <div className="w-12 h-0.5 bg-[#c5a059] mx-auto mb-4"></div>
+                    <p className="text-slate-300 text-sm sm:text-base font-light max-w-xl mx-auto leading-relaxed">
+                        Explorá nuestras opciones de compra y alquiler en las mejores zonas residenciales y serranas.
+                    </p>
+                </div>
             </div>
 
-            {/* Buscador */}
-            <div className="container mx-auto px-4 -mt-8 relative z-10 mb-12">
-                <form onSubmit={buscar} className="bg-white rounded-xl shadow-lg px-7 py-6">
-                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-4">
+            {/* BUSCADOR Y FILTROS FLOTANTES */}
+            <div className="container mx-auto px-4 -mt-10 relative z-20 mb-14 max-w-6xl">
+                <form
+                    onSubmit={buscar}
+                    className="bg-white/95 backdrop-blur-md rounded-2xl p-6 sm:p-7 shadow-xl border border-slate-200/80 transition-all"
+                >
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-5">
 
                         {/* Ubicación */}
                         <div className="lg:col-span-2">
                             <label className={labelClass}>¿Dónde buscás?</label>
-                            <input
-                                type="text"
-                                value={ubicacionInput}
-                                onChange={e => setUbicacionInput(e.target.value)}
-                                placeholder="Ej: Tandil, centro..."
-                                className={inputClass}
-                            />
+                            <div className="relative">
+                                <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#946e27]">
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                </span>
+                                <input
+                                    type="text"
+                                    value={ubicacionInput}
+                                    onChange={e => setUbicacionInput(e.target.value)}
+                                    placeholder="Ej: Centro, El Cerrito, Av. España..."
+                                    className={`${inputClass} pl-10`}
+                                />
+                            </div>
                         </div>
 
                         {/* Operación */}
                         <div>
                             <label className={labelClass}>Operación</label>
                             <select value={tipoInput} onChange={e => setTipoInput(e.target.value)} className={selectClass}>
-                                <option value="">Todas</option>
-                                <option value="Alquiler">Alquiler</option>
+                                <option value="">Todas (Venta y Alquiler)</option>
                                 <option value="Venta">Venta</option>
+                                <option value="Alquiler">Alquiler</option>
                             </select>
                         </div>
 
                         {/* Categoría */}
                         <div>
-                            <label className={labelClass}>Tipo de propiedad</label>
+                            <label className={labelClass}>Tipo de inmueble</label>
                             <select value={categoriaInput} onChange={e => setCategoriaInput(e.target.value)} className={selectClass}>
-                                <option value="">Todas</option>
+                                <option value="">Todas las tipologías</option>
                                 {CATEGORIAS.map(c => (
                                     <option key={c} value={c}>{c}</option>
                                 ))}
@@ -126,7 +147,7 @@ export default function Propiedades() {
                                     min="0"
                                     className={inputClass}
                                 />
-                                <span className="text-gray-300 text-sm shrink-0">—</span>
+                                <span className="text-slate-300 font-light">—</span>
                                 <input
                                     type="number"
                                     value={precioMaxInput}
@@ -139,81 +160,137 @@ export default function Propiedades() {
                         </div>
                     </div>
 
-                    {/* Botones */}
-                    <div className="flex items-center gap-3">
-                        <button type="submit"
-                                className="bg-[#2c3e50] text-white font-semibold px-8 py-2.5 rounded-lg hover:bg-[#1a252f] transition-all text-sm">
-                            Buscar
-                        </button>
-                        {hayFiltros && (
-                            <button type="button" onClick={limpiar}
-                                    className="text-gray-500 px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-all text-sm">
-                                Limpiar filtros
+                    {/* Acciones y Conteo */}
+                    <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-100">
+                        <div className="flex items-center gap-3">
+                            <button
+                                type="submit"
+                                className="bg-[#0f172a] hover:bg-[#1e293b] text-white font-medium text-xs uppercase tracking-wider px-7 py-3 rounded-xl transition-all shadow-sm flex items-center gap-2"
+                            >
+                                <svg className="w-4 h-4 text-[#c5a059]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                </svg>
+                                Buscar Inmuebles
                             </button>
-                        )}
-                        {hayFiltros && (
-                            <p className="text-gray-400 text-xs ml-auto">
-                                {propiedades.length} resultado{propiedades.length !== 1 ? 's' : ''}
-                            </p>
-                        )}
+                            {hayFiltros && (
+                                <button
+                                    type="button"
+                                    onClick={limpiar}
+                                    className="text-slate-500 hover:text-slate-800 text-xs font-semibold px-4 py-3 rounded-xl hover:bg-slate-100 transition-all"
+                                >
+                                    Limpiar filtros
+                                </button>
+                            )}
+                        </div>
+
+                        <p className="text-xs text-slate-500 font-medium">
+                            {propiedades.length} {propiedades.length === 1 ? 'propiedad encontrada' : 'propiedades encontradas'}
+                        </p>
                     </div>
                 </form>
             </div>
 
-            {/* Grilla */}
-            <div className="container mx-auto px-4 pb-16">
+            {/* GRILLA DE PROPIEDADES */}
+            <div className="container mx-auto px-4 pb-24 max-w-6xl flex-1">
                 {loading ? (
-                    <div className="text-center py-20 text-gray-400">Cargando propiedades...</div>
+                    <div className="text-center py-24 text-slate-400 flex flex-col items-center justify-center gap-3">
+                        <div className="w-8 h-8 border-2 border-[#c5a059] border-t-transparent rounded-full animate-spin"></div>
+                        <span className="text-xs uppercase tracking-wider font-medium">Cargando propiedades...</span>
+                    </div>
                 ) : propiedades.length === 0 ? (
-                    <div className="text-center py-20 text-gray-400">
-                        <p className="text-lg">No hay propiedades que coincidan con tu búsqueda.</p>
-                        <button onClick={limpiar} className="mt-4 text-[#2c3e50] underline text-sm">Ver todas</button>
+                    <div className="text-center py-24 bg-white rounded-2xl border border-slate-200/80 p-8 max-w-md mx-auto shadow-sm">
+                        <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 text-[#946e27]">
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                            </svg>
+                        </div>
+                        <h3 className="font-serif text-lg font-semibold text-[#0f172a] mb-2">No se encontraron resultados</h3>
+                        <p className="text-slate-500 text-xs mb-6 leading-relaxed">
+                            Probá ajustando los criterios de búsqueda o limpiá los filtros aplicados.
+                        </p>
+                        <button
+                            onClick={limpiar}
+                            className="bg-[#0f172a] hover:bg-[#1e293b] text-white text-xs font-semibold px-6 py-2.5 rounded-xl transition-all shadow-sm"
+                        >
+                            Ver todas las propiedades
+                        </button>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {propiedades.map((p) => (
-                            <div key={p.id} className="bg-white rounded-xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all">
-                                {/* Foto principal o placeholder */}
-                                <div className="h-48 bg-gray-200 overflow-hidden relative">
+                            <div
+                                key={p.id}
+                                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200/80 hover:border-slate-300 transition-all duration-300 flex flex-col group"
+                            >
+                                {/* Foto */}
+                                <div className="h-56 bg-slate-100 overflow-hidden relative">
                                     {p.fotos && p.fotos.length > 0 ? (
-                                        <img src={p.fotos[0].url} alt={p.titulo} className="w-full h-full object-cover" />
+                                        <img
+                                            src={p.fotos[0].url}
+                                            alt={p.titulo}
+                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                        />
                                     ) : (
-                                        <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
-                                            Sin fotos
+                                        <div className="w-full h-full flex flex-col items-center justify-center text-slate-400 text-sm gap-2">
+                                            <svg className="w-8 h-8 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                            </svg>
+                                            <span className="text-xs">Sin fotos disponibles</span>
                                         </div>
                                     )}
-                                    {/* Badge categoría */}
-                                    {p.categoria && (
-                                        <span className="absolute top-3 left-3 bg-black/50 text-white text-xs font-medium px-2.5 py-1 rounded-full">
-                                            {p.categoria}
-                                        </span>
-                                    )}
-                                </div>
 
-                                <div className="p-5">
-                                    <div className="flex justify-between items-start mb-1">
-                                        <h3 className="font-bold text-[#2c3e50] text-base leading-tight"
-                                            style={{ fontFamily: 'Oswald, sans-serif' }}>
-                                            {p.titulo}
-                                        </h3>
-                                        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ml-2 shrink-0 ${
-                                            p.tipo === 'Alquiler' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'
+                                    {/* Badges superiores */}
+                                    <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                                        {p.categoria ? (
+                                            <span className="bg-[#0f172a]/90 backdrop-blur-sm text-[#e6ca91] text-[11px] font-semibold px-2.5 py-1 rounded-full shadow-sm">
+                                                {p.categoria}
+                                            </span>
+                                        ) : <span></span>}
+
+                                        <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm uppercase tracking-wider ${
+                                            p.tipo === 'Alquiler'
+                                                ? 'bg-blue-600 text-white'
+                                                : 'bg-emerald-600 text-white'
                                         }`}>
                                             {p.tipo}
                                         </span>
                                     </div>
-                                    <p className="text-gray-400 text-xs mb-3">📍 {p.ubicacion || 'Sin ubicación'}</p>
-                                    <p className="text-gray-500 text-sm leading-relaxed line-clamp-2">{p.descripcion}</p>
                                 </div>
 
-                                <div className="px-5 py-4 border-t border-gray-100 flex justify-between items-center">
-                                    <span className="font-bold text-[#2c3e50] text-lg" style={{ fontFamily: 'Oswald, sans-serif' }}>
-                                        $ {p.precio?.toLocaleString('es-AR')}
-                                    </span>
-                                    <Link to={`/propiedades/${p.id}`}
-                                          className="bg-[#2c3e50] text-white text-xs font-medium px-4 py-2 rounded-lg hover:bg-[#1a252f] transition-all">
-                                        Ver más
-                                    </Link>
+                                {/* Contenido */}
+                                <div className="p-6 flex-1 flex flex-col justify-between">
+                                    <div>
+                                        <p className="text-xs text-slate-400 font-medium flex items-center gap-1 mb-2">
+                                            <svg className="w-3.5 h-3.5 text-[#946e27]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                            </svg>
+                                            {p.ubicacion || 'Tandil, Buenos Aires'}
+                                        </p>
+                                        <h3 className="font-serif font-semibold text-[#0f172a] text-lg leading-snug mb-2 group-hover:text-[#946e27] transition-colors">
+                                            {p.titulo}
+                                        </h3>
+                                        <p className="text-slate-500 text-xs leading-relaxed line-clamp-2 mb-4 font-normal">
+                                            {p.descripcion}
+                                        </p>
+                                    </div>
+
+                                    {/* Precio y CTA */}
+                                    <div className="pt-4 border-t border-slate-100 flex items-center justify-between mt-auto">
+                                        <div>
+                                            <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-medium">Valor</span>
+                                            <span className="font-serif font-bold text-[#0f172a] text-xl">
+                                                $ {p.precio?.toLocaleString('es-AR')}
+                                            </span>
+                                        </div>
+                                        <Link
+                                            to={`/propiedades/${p.id}`}
+                                            className="bg-[#0f172a] hover:bg-[#1e293b] text-white text-xs font-semibold px-4 py-2 rounded-xl transition-all inline-flex items-center gap-1.5 shadow-sm"
+                                        >
+                                            Ver ficha
+                                            <span className="text-xs">→</span>
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         ))}
