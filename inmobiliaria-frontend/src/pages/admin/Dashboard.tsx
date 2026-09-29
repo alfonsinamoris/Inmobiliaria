@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { getPropiedades, eliminarPropiedad } from '../../api/propiedades';
+import { getPropiedades, eliminarPropiedad } from '../../api/Propiedades';
 import type { Propiedad } from '../../types';
 
 export default function Dashboard() {
