@@ -14,7 +14,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
                 @Override
                 public void addCorsMappings(CorsRegistry registry) {
                     registry.addMapping("/**") // Aplica a todos los endpoints (/api/propiedades, /api/auth, etc)
-                        .allowedOrigins("https://inmobiliaria-production-1148.up.railway.app") //
+                        .allowedOrigins(
+                            "http://localhost:5173",
+                            "http://localhost:5174",
+                            "https://TU-URL-DE-VERCEL.vercel.app"  // ← URL del frontend
+                        )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
