@@ -32,15 +32,15 @@ public class SecurityConfig {
     @Autowired
     private JwtAuthFilter jwtAuthFilter;
 
-    // Cambiamos el nombre a customCorsFilter para evitar conflicto de nombres en Spring
+
     @Bean
     public FilterRegistrationBean<CorsFilter> customCorsFilter() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of(
             "http://localhost:5173",
-            "http://localhost:5174",
-            "http://localhost:3000",
-            "https://inmobiliaria-one-steel.vercel.app"
+            "https://inmobiliaria-one-steel.vercel.app",
+            "https://inmobiliarialucreciamoreno.com.ar",
+            "https://www.inmobiliarialucreciamoreno.com.ar"
         ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         config.setAllowedHeaders(List.of("*"));
