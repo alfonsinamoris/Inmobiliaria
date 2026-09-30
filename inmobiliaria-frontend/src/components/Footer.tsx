@@ -2,27 +2,29 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
     return (
-        <footer className="bg-[#0b1120] text-slate-300 pt-16 pb-8 border-t border-slate-800">
-            <div className="container mx-auto px-4 lg:px-8 max-w-6xl py-14">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <footer className="bg-[#0b1120] text-slate-300 pt-16 pb-8 border-t border-slate-800 font-sans antialiased">
+            <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
+                
+                {/* CUERPO PRINCIPAL DEL FOOTER: 4 COLUMNAS ALINEADAS ARRIBA */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-14 items-start">
 
-                    {/* Columna 1: Logo Oficial Centrado Verticalmente (4 cols) */}
-                    <div className="lg:col-span-4 flex flex-col justify-center items-start self-center">
+                    {/* Columna 1: Logo Oficial (4 cols en desktop) */}
+                    <div className="lg:col-span-4 flex flex-col items-start pt-1">
                         <Link to="/home" className="inline-block group">
                             <img
                                 src="/img/logoInmo.png"
                                 alt="Inmobiliaria Lucrecia Moreno"
-                                className="h-20 sm:h-24 md:h-28 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow"
+                                className="h-20 sm:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow"
                             />
                         </Link>
                     </div>
 
                     {/* Columna 2: Navegación & Catálogo (3 cols) */}
-                    <div className="lg:col-span-3 space-y-3">
-                        <p className="text-white text-xs font-semibold uppercase tracking-widest border-l-2 border-[#c5a059] pl-2.5">
+                    <div className="lg:col-span-3 flex flex-col space-y-3.5">
+                        <p className="text-white text-xs font-semibold uppercase tracking-widest border-l-2 border-[#c5a059] pl-2.5 h-4 flex items-center">
                             Navegación & Catálogo
                         </p>
-                        <ul className="space-y-2 text-xs text-slate-400 font-light">
+                        <ul className="space-y-2 text-xs text-slate-400 font-light pt-0.5">
                             <li>
                                 <Link to="/home" className="hover:text-[#c5a059] transition-colors flex items-center gap-1.5">
                                     <span className="text-[10px] text-slate-600">›</span> Inicio
@@ -57,11 +59,11 @@ export default function Footer() {
                     </div>
 
                     {/* Columna 3: Estudio Central & Atención (2 cols) */}
-                    <div className="lg:col-span-2 space-y-3">
-                        <p className="text-white text-xs font-semibold uppercase tracking-widest border-l-2 border-[#c5a059] pl-2.5">
+                    <div className="lg:col-span-2 flex flex-col space-y-3.5">
+                        <p className="text-white text-xs font-semibold uppercase tracking-widest border-l-2 border-[#c5a059] pl-2.5 h-4 flex items-center">
                             Estudio Central
                         </p>
-                        <div className="space-y-3 text-xs text-slate-300 font-light">
+                        <div className="space-y-3 text-xs text-slate-300 font-light pt-0.5">
                             <div className="flex items-start gap-2.5">
                                 <span className="text-[#c5a059] text-sm shrink-0 mt-0.5">📍</span>
                                 <div>
@@ -89,8 +91,8 @@ export default function Footer() {
                     </div>
 
                     {/* Columna 4: Canal Directo & WhatsApp Box (3 cols) */}
-                    <div className="lg:col-span-3 space-y-3">
-                        <p className="text-white text-xs font-semibold uppercase tracking-widest border-l-2 border-[#c5a059] pl-2.5">
+                    <div className="lg:col-span-3 flex flex-col space-y-3.5">
+                        <p className="text-white text-xs font-semibold uppercase tracking-widest border-l-2 border-[#c5a059] pl-2.5 h-4 flex items-center">
                             Canal Directo
                         </p>
                         
@@ -133,15 +135,12 @@ export default function Footer() {
                     </div>
 
                 </div>
-            </div>
 
-                {/* Sub-footer con créditos y términos */}
+                {/* SUB-FOOTER CON CRÉDITOS Y TÉRMINOS */}
                 <div className="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-xs text-center sm:text-left">
-                    
-                    {/* ACÁ ESTÁ EL CAMBIO: El texto de copyright y el candado agrupados */}
                     <div className="flex items-center gap-1.5">
                         <p>© 2026 Inmobiliaria Lucrecia Moreno. Todos los derechos reservados.</p>
-                        <Link to="/login" className="opacity-30 cursor-default outline-none" title="Acceso Intranet">
+                        <Link to="/login" className="opacity-30 hover:opacity-100 transition-opacity outline-none" title="Acceso Intranet">
                             <svg 
                                 width="10" 
                                 height="10" 
@@ -163,7 +162,8 @@ export default function Footer() {
                         <Link to="/contacto" className="hover:text-slate-400 transition-colors">Política de Privacidad</Link>
                     </div>
                 </div>
-            
+
+            </div>
         </footer>
     );
 }
