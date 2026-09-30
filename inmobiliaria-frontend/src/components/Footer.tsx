@@ -92,7 +92,27 @@ export default function Footer() {
 
                 {/* Sub-footer con créditos y términos */}
                 <div className="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-xs text-center sm:text-left">
-                    <p>© 2026 Inmobiliaria Lucrecia Moreno. Todos los derechos reservados.</p>
+                    
+                    {/* ACÁ ESTÁ EL CAMBIO: El texto de copyright y el candado agrupados */}
+                    <div className="flex items-center gap-1.5">
+                        <p>© 2026 Inmobiliaria Lucrecia Moreno. Todos los derechos reservados.</p>
+                        <Link to="/login" className="opacity-20 cursor-default outline-none" title="Acceso Intranet">
+                            <svg 
+                                width="10" 
+                                height="10" 
+                                viewBox="0 0 24 24" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                strokeWidth="2" 
+                                strokeLinecap="round" 
+                                strokeLinejoin="round"
+                            >
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </Link>
+                    </div>
+
                     <div className="flex gap-4">
                         <Link to="/contacto" className="hover:text-slate-400 transition-colors">Términos y Condiciones</Link>
                         <Link to="/contacto" className="hover:text-slate-400 transition-colors">Política de Privacidad</Link>
