@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://inmobiliaria-production-1148.up.railway.app',  
+    baseURL: 'https://inmobiliaria-production-1148.up.railway.app/api',  
     headers: { 'Content-Type': 'application/json' },
 });
 
