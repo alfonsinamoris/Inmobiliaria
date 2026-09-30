@@ -37,24 +37,20 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link to="/propiedades?tipo=Alquiler" className="hover:text-[#c5a059] transition-colors flex items-center gap-1.5">
-                                    <span className="text-[10px] text-slate-600">›</span> Alquileres Residenciales
+                                    <span className="text-[10px] text-slate-600">›</span> Alquileres 
                                 </Link>
                             </li>
                             <li>
                                 <Link to="/nosotros" className="hover:text-[#c5a059] transition-colors flex items-center gap-1.5">
-                                    <span className="text-[10px] text-slate-600">›</span> Sobre Nosotros & Legal
+                                    <span className="text-[10px] text-slate-600">›</span> Sobre Nosotros 
                                 </Link>
                             </li>
                             <li>
                                 <Link to="/contacto" className="hover:text-[#c5a059] transition-colors flex items-center gap-1.5">
-                                    <span className="text-[10px] text-slate-600">›</span> Tasaciones Profesionales
+                                    <span className="text-[10px] text-slate-600">›</span> Tasaciones 
                                 </Link>
                             </li>
-                            <li>
-                                <Link to="/login" className="hover:text-[#c5a059] transition-colors flex items-center gap-1.5">
-                                    <span className="text-[10px] text-slate-600">›</span> Portal Administrativo
-                                </Link>
-                            </li>
+                            
                         </ul>
                     </div>
 
