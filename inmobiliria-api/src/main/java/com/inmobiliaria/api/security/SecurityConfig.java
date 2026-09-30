@@ -37,7 +37,7 @@ public class SecurityConfig {
             "http://localhost:5173",
             "http://localhost:5174",
             "http://localhost:3000",
-            "${FRONTEND_URL:https://inmobiliaria-one-steel.vercel.app/}"
+            "https://inmobiliaria-one-steel.vercel.app" //
         ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         config.setAllowedHeaders(List.of("*"));
