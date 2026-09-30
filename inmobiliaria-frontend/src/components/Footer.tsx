@@ -96,7 +96,7 @@ export default function Footer() {
                     {/* ACÁ ESTÁ EL CAMBIO: El texto de copyright y el candado agrupados */}
                     <div className="flex items-center gap-1.5">
                         <p>© 2026 Inmobiliaria Lucrecia Moreno. Todos los derechos reservados.</p>
-                        <Link to="/login" className="opacity-20 cursor-default outline-none" title="Acceso Intranet">
+                        <Link to="/login" className="opacity-30 cursor-default outline-none" title="Acceso Intranet">
                             <svg 
                                 width="10" 
                                 height="10" 
