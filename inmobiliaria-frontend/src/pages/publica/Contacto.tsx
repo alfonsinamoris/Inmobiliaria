@@ -22,6 +22,7 @@ export default function Contacto() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        console.log('Enviando...', form);
         setEstado('enviando');
         try {
             await emailjs.send(
@@ -41,6 +42,7 @@ export default function Contacto() {
             console.error(err);
             setEstado('error');
         }
+        
     };
 
     const inputClass = "w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-[#c5a059] focus:ring-1 focus:ring-[#c5a059] transition-all placeholder:text-slate-400";
