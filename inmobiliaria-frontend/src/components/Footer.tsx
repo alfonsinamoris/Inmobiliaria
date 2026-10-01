@@ -57,7 +57,7 @@ export default function Footer() {
                     {/* Columna 3: Estudio Central & Atención (2 cols) */}
                     <div className="lg:col-span-2 flex flex-col space-y-3.5">
                         <p className="text-white text-xs font-semibold uppercase tracking-widest border-l-2 border-[#c5a059] pl-2.5 h-4 flex items-center">
-                            Estudio Central
+                            Oficina
                         </p>
                         <div className="space-y-3 text-xs text-slate-300 font-light pt-0.5">
                             <div className="flex items-start gap-2.5">
@@ -80,7 +80,7 @@ export default function Footer() {
                                     href="mailto:lucreciamorenoinmobiliaria@gmail.com"
                                     className="hover:text-[#c5a059] transition-colors break-all text-[11px]"
                                 >
-                                    contacto@lucreciamoreno.com.ar
+                                    lucreciamorenoinmobiliaria@gmail.com
                                 </a>
                             </div>
                         </div>
