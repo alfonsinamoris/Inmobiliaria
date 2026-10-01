@@ -44,7 +44,7 @@ export default function Login() {
                             type="text"
                             value={username}
                             onChange={e => setUsername(e.target.value)}
-                            placeholder="admin"
+                            placeholder="usuario"
                             required
                             className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#495057] focus:ring-2 focus:ring-[#2c3e50]/10"
                         />
@@ -55,7 +55,7 @@ export default function Login() {
                             type="password"
                             value={password}
                             onChange={e => setPassword(e.target.value)}
-                            placeholder="••••••••"
+                            placeholder="contraseña"
                             required
                             className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#495057] focus:ring-2 focus:ring-[#2c3e50]/10"
                         />
