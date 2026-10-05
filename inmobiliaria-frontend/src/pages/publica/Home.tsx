@@ -33,7 +33,7 @@ export default function Home() {
                     </h1>
 
                     <p className="text-base sm:text-lg text-slate-200 font-light max-w-2xl mb-10 leading-relaxed">
-                        Tu inmobiliaria de confianza en Tandil. Especialistas en venta, alquiler y tasaciones profesionales de propiedades seleccionadas con atención personalizada.
+                         Cada propiedad tiene una historia y cada decisión inmobiliaria merece ser acompañada con visión y profesionalismo.
                     </p>
 
                     {/* Acciones principales */}
@@ -145,7 +145,7 @@ export default function Home() {
                             <h2 className="text-3xl font-serif text-[#0f172a] mb-4">PROPIEDADES DESTACADAS</h2>
                             <div className="w-12 h-0.5 bg-[#c5a059] mx-auto mb-4"></div>
                             <p className="text-slate-500 text-sm leading-relaxed">
-                                Una selección de nuestras mejores oportunidades en Tandil y sus zonas serranas más codiciadas.
+                                Una selección de nuestras mejores oportunidades en Tandil y zona.
                             </p>
                         </div>
 
