@@ -55,11 +55,8 @@ export default function SobreNosotros() {
                 </span>
             
                 <div className="w-10 h-0.5 bg-[#c5a059] mx-auto mb-6"></div>
-                <p className="mb-4">
-                     En <strong>Inmobiliaria Lucrecia Moreno</strong> concebimos el mercado de bienes raíces desde una perspectiva diferente. Sabemos que detrás de cada operación en Tandil y la zona no solo hay metros cuadrados, sino familias que crecen, ahorros de toda una vida, inversiones estratégicas y proyectos que se hacen realidad.
-                </p>
                 <p className="mb-6">
-                    Nuestro diferencial radica en cómo hacemos las cosas. Hemos construido una firma donde la ética profesional, la actualización constante y el trato humano se combinan para brindar un servicio integral. No buscamos simplemente cerrar una venta o un alquiler, sino forjar relaciones de confianza a largo plazo con cada persona que cruza nuestra puerta.
+                En <strong>Inmobiliaria Lucrecia Moreno</strong> concebimos el mercado de bienes raíces desde una perspectiva diferente. Nuestro diferencial radica en cómo hacemos las cosas. Hemos construido una firma donde la ética profesional, la actualización constante y el trato humano se combinan para brindar un servicio integral. No buscamos simplemente cerrar una venta o un alquiler, sino forjar relaciones de confianza a largo plazo con cada persona que cruza nuestra puerta.
                 </p>
                 <p className="font-semibold text-slate-800 mb-3">
                     Para lograrlo, nuestro trabajo diario se sostiene sobre tres pilares innegociables:
