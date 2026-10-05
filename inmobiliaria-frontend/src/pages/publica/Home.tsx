@@ -27,11 +27,9 @@ export default function Home() {
             >
                 <div className="max-w-4xl mx-auto flex flex-col items-center z-10">
                     
-
-                    {/* Título Principal con toque editorial */}
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.15] mb-6 font-serif">
                         INMOBILIARIA 
-                        <span className="italic font-light text-[#e6ca91]">LUCRECIA MORENO</span>
+                        <span className="block italic font-light text-[#e6ca91]">LUCRECIA MORENO</span>
                     </h1>
 
                     <p className="text-base sm:text-lg text-slate-200 font-light max-w-2xl mb-10 leading-relaxed">
