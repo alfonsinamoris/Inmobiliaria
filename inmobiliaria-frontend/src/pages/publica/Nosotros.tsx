@@ -6,16 +6,16 @@ const equipo = [
         nombre: 'Lucrecia Moreno',
         rol: 'Martillera Pública',
         matricula: 'Mat. 1659',
-        foto: '/img/lucrecia.jpg', // reemplazar con foto real
+        foto: '/img/lucrecia.jpg', 
         descripcion:
-            'Con más de una década de trayectoria en el mercado inmobiliario de Tandil, Lucrecia combina su profundo conocimiento del sector con un trato cercano y personalizado. Su compromiso es acompañar a cada cliente en cada etapa del proceso, brindando asesoramiento claro, honesto y profesional para lograr la mejor decisión.',
+            'Soy Lucrecia Moreno, Martillera y Corredora Pública. Desde mis inicios en 2016, entendí que mi trabajo va mucho más allá de una propiedad: se trata de las historias y los sueños de cada persona que confía en mí. Por eso, en 2018 fundé mi propia inmobiliaria con un objetivo claro: acompañar cada etapa de tu operación con el profesionalismo, la dedicación y la contención que una decisión tan importante requiere.',
         icono: '🏛️',
     },
     {
         nombre: 'Mariana Lende',
         rol: 'Abogada',
         matricula: 'Especializada en Sucesiones',
-        foto: '/img/mariana.jpg', // reemplazar con foto real
+        foto: '/img/mariana.jpg', 
         descripcion:
             'Mariana brinda asesoramiento legal especializado en procesos sucesorios, garantizando que cada operación inmobiliaria se realice con total seguridad jurídica. Su expertise permite a los clientes transitar estos procesos con tranquilidad, claridad y respaldo profesional en cada paso.',
         icono: '⚖️',
@@ -42,9 +42,29 @@ export default function SobreNosotros() {
                         SOBRE NOSOTROS
                     </h1>
                     <div className="w-12 h-0.5 bg-[#c5a059] mx-auto mb-4"></div>
-                    <p className="text-slate-300 text-sm sm:text-base font-light max-w-xl mx-auto leading-relaxed">
-                        Un equipo de profesionales comprometidas con brindarte el mejor servicio inmobiliario en Tandil y zona.
+                    <p className="mb-4">
+                        En <strong>Inmobiliaria Lucrecia Moreno</strong> concebimos el mercado de bienes raíces desde una perspectiva diferente. 
                     </p>
+                    <p className="mb-6">
+                        Nuestro diferencial radica en cómo hacemos las cosas. Hemos construido una firma donde la ética profesional, la actualización constante y el trato humano se combinan para brindar un servicio integral. No buscamos simplemente cerrar una venta o un alquiler, sino forjar relaciones de confianza a largo plazo con cada persona que cruza nuestra puerta.
+                    </p>
+                    <p className="font-semibold text-slate-800 mb-3">
+                        Para lograrlo, nuestro trabajo diario se sostiene sobre tres pilares innegociables:
+                    </p>
+                    <ul className="space-y-3 text-left max-w-2xl mx-auto pl-4 md:pl-0">
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#c5a059] mt-1">▪</span>
+                            <span><strong>Responsabilidad:</strong> Cuidamos tu patrimonio legal y comercial garantizando total transparencia en cada paso de la gestión.</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#c5a059] mt-1">▪</span>
+                            <span><strong>Compromiso:</strong> Nos involucramos al cien por ciento en tu proyecto, buscando soluciones reales y defendiendo tus intereses.</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <span className="text-[#c5a059] mt-1">▪</span>
+                            <span><strong>Acompañamiento personalizado:</strong> Entendemos que tu caso es único. Te escuchamos y estamos a tu lado desde la primera consulta hasta la entrega de llaves.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
