@@ -42,29 +42,9 @@ export default function SobreNosotros() {
                         SOBRE NOSOTROS
                     </h1>
                     <div className="w-12 h-0.5 bg-[#c5a059] mx-auto mb-4"></div>
-                    <p className="mb-4">
-                        En <strong>Inmobiliaria Lucrecia Moreno</strong> concebimos el mercado de bienes raíces desde una perspectiva diferente. 
+                    <p className="text-slate-300 text-sm sm:text-base font-light max-w-xl mx-auto leading-relaxed">
+                        Un equipo de profesionales comprometidas con brindarte el mejor servicio inmobiliario en Tandil y zona.
                     </p>
-                    <p className="mb-6">
-                        Nuestro diferencial radica en cómo hacemos las cosas. Hemos construido una firma donde la ética profesional, la actualización constante y el trato humano se combinan para brindar un servicio integral. No buscamos simplemente cerrar una venta o un alquiler, sino forjar relaciones de confianza a largo plazo con cada persona que cruza nuestra puerta.
-                    </p>
-                    <p className="font-semibold text-slate-800 mb-3">
-                        Para lograrlo, nuestro trabajo diario se sostiene sobre tres pilares innegociables:
-                    </p>
-                    <ul className="space-y-3 text-left max-w-2xl mx-auto pl-4 md:pl-0">
-                        <li className="flex items-start gap-2">
-                            <span className="text-[#c5a059] mt-1">▪</span>
-                            <span><strong>Responsabilidad:</strong> Cuidamos tu patrimonio legal y comercial garantizando total transparencia en cada paso de la gestión.</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                            <span className="text-[#c5a059] mt-1">▪</span>
-                            <span><strong>Compromiso:</strong> Nos involucramos al cien por ciento en tu proyecto, buscando soluciones reales y defendiendo tus intereses.</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                            <span className="text-[#c5a059] mt-1">▪</span>
-                            <span><strong>Acompañamiento personalizado:</strong> Entendemos que tu caso es único. Te escuchamos y estamos a tu lado desde la primera consulta hasta la entrega de llaves.</span>
-                        </li>
-                    </ul>
                 </div>
             </div>
 
@@ -73,13 +53,31 @@ export default function SobreNosotros() {
                 <span className="text-[11px] uppercase tracking-widest text-[#946e27] font-semibold block mb-3">
                     Nuestra historia
                 </span>
-                <h2 className="text-3xl font-serif text-[#0f172a] font-normal mb-4">
-                    Experiencia y confianza al servicio de cada cliente
-                </h2>
+            
                 <div className="w-10 h-0.5 bg-[#c5a059] mx-auto mb-6"></div>
-                <p className="text-slate-500 text-sm leading-relaxed font-light">
-                    Inmobiliaria Lucrecia Moreno nació con el objetivo de ofrecer un servicio inmobiliario cercano, transparente y profesional en la ciudad de Tandil. A lo largo de los años, construimos una sólida reputación basada en la confianza de nuestros clientes y el profundo conocimiento del mercado local.
+                <p className="mb-4">
+                     En <strong>Inmobiliaria Lucrecia Moreno</strong> concebimos el mercado de bienes raíces desde una perspectiva diferente. Sabemos que detrás de cada operación en Tandil y la zona no solo hay metros cuadrados, sino familias que crecen, ahorros de toda una vida, inversiones estratégicas y proyectos que se hacen realidad.
                 </p>
+                <p className="mb-6">
+                    Nuestro diferencial radica en cómo hacemos las cosas. Hemos construido una firma donde la ética profesional, la actualización constante y el trato humano se combinan para brindar un servicio integral. No buscamos simplemente cerrar una venta o un alquiler, sino forjar relaciones de confianza a largo plazo con cada persona que cruza nuestra puerta.
+                </p>
+                <p className="font-semibold text-slate-800 mb-3">
+                    Para lograrlo, nuestro trabajo diario se sostiene sobre tres pilares innegociables:
+                </p>
+                <ul className="space-y-3 text-left max-w-2xl mx-auto pl-4 md:pl-0">
+                    <li className="flex items-start gap-2">
+                        <span className="text-[#c5a059] mt-1">▪</span>
+                        <span><strong>Responsabilidad:</strong> Cuidamos tu patrimonio legal y comercial garantizando total transparencia en cada paso de la gestión.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                        <span className="text-[#c5a059] mt-1">▪</span>
+                        <span><strong>Compromiso:</strong> Nos involucramos al cien por ciento en tu proyecto, buscando soluciones reales y defendiendo tus intereses.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                        <span className="text-[#c5a059] mt-1">▪</span>
+                        <span><strong>Acompañamiento personalizado:</strong> Entendemos que tu caso es único. Te escuchamos y estamos a tu lado desde la primera consulta hasta la entrega de llaves.</span>
+                    </li>
+                </ul>
             </section>
 
             {/* EQUIPO */}
