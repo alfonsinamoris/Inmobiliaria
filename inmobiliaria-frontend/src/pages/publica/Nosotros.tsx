@@ -99,7 +99,7 @@ export default function SobreNosotros() {
                                 <img
                                     src={persona.foto}
                                     alt={persona.nombre}
-                                    className="w-full h-full object-cover object-top"
+                                    className="w-full h-full object-cover object-center"
                                     onError={(e) => {
                                         // Si no hay foto muestra un placeholder
                                         const target = e.target as HTMLImageElement;
