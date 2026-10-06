@@ -5,16 +5,16 @@ const equipo = [
     {
         nombre: 'Lucrecia Moreno',
         rol: 'Martillera Pública',
-        matricula: 'Mat. 1659',
-        foto: '/img/lucrecia.heic', 
+        matricula: 'T VI F 250 M 1659',
+        foto: '/img/lucrecia.png', 
         descripcion:
             ' Martillera y Corredora Pública con trayectoria desde el año 2016, Lucrecia es la fundadora y directora de la firma. Entendiendo que el mercado de bienes raíces va mucho más allá de las propiedades, centra su labor en las historias y los proyectos de vida de quienes confían en ella. Desde la apertura de su propia oficina en 2018, su objetivo ha sido acompañar cada etapa de la operación brindando el profesionalismo, la dedicación y la contención humana que una decisión tan importante requiere, liderando cada gestión con empatía y transparencia.'
     },
     {
         nombre: 'Mariana Lende',
         rol: 'Abogada',
-        matricula: 'Especializada en Sucesiones',
-        foto: '/img/mariana.heic', 
+        matricula: 'T XI F 44 C.A.A.',
+        foto: '/img/mariana.png', 
         descripcion:
         'Con más de una década trabajando como abogada en la ciudad de Tandil, Mariana integra nuestro estudio, brindando asesoramiento  con responsabilidad y compromiso, destacándose por la cercanía en el trato, la búsqueda de soluciones claras y seguras para nuestros clientes. Acompañándonos en todas nuestras operaciones, aporta un servicio diferencial, brindando seguridad jurídica y soporte técnico de manera personalizada. Especializada, en el campo del Derecho Sucesorio, y Derecho Inmobiliario, es la encargada de revisión de documental y estudio de títulos correspondientes a cada operación, procurando que cada persona pueda comprender su situación y tomar decisiones con la tranquilidad de contar con un adecuado respaldo legal.'
     },
@@ -29,7 +29,9 @@ export default function SobreNosotros() {
             <div
                 className="relative py-24 text-center text-white bg-cover bg-center"
                 style={{
-                    backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.82) 0%, rgba(15, 23, 42, 0.92) 100%), src('public/img/nosotros.heic')`,
+                    backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.82) 0%, rgba(15, 23, 42, 0.92) 100%), url('/img/nosotros.png')`,
+                    backgroundSize: 'cover', 
+                    backgroundPosition: 'center', 
                 }}
             >
                 <div className="container mx-auto px-4 max-w-3xl relative z-10">

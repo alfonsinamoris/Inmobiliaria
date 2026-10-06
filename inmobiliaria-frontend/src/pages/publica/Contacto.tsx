@@ -56,7 +56,7 @@ export default function Contacto() {
             <div
                 className="relative py-24 text-center text-white bg-cover bg-center"
                 style={{
-                    backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.82) 0%, rgba(15, 23, 42, 0.92) 100%), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2000&q=80')`,
+                    backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.82) 0%, rgba(15, 23, 42, 0.92) 100%), url('img/contacto.png')`,
                 }}
             >
                 <div className="container mx-auto px-4 max-w-3xl relative z-10">
