@@ -22,7 +22,9 @@ export default function Home() {
             <section
                 className="relative min-h-[80vh] flex items-center justify-center text-center text-white px-4 py-28 bg-cover bg-center"
                 style={{
-                    backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.72) 0%, rgba(15, 23, 42, 0.85) 100%), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80')`,
+                    backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.72) 0%, rgba(15, 23, 42, 0.85) 100%), url('/img/home.png')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
                 }}
             >
                 <div className="max-w-4xl mx-auto flex flex-col items-center z-10">
