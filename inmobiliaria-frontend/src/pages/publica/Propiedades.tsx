@@ -81,7 +81,7 @@ export default function Propiedades() {
                     </h1>
                     <div className="w-12 h-0.5 bg-[#c5a059] mx-auto mb-4"></div>
                     <p className="text-slate-300 text-sm sm:text-base font-light max-w-xl mx-auto leading-relaxed">
-                        Explorá nuestras opciones de compra y alquiler en las mejores zonas residenciales y serranas.
+                        Explorá nuestras opciones de compra y alquiler en Tandil .
                     </p>
                 </div>
             </div>

@@ -8,8 +8,7 @@ const equipo = [
         matricula: 'Mat. 1659',
         foto: '/img/lucrecia.jpg', 
         descripcion:
-            'Soy Lucrecia Moreno, Martillera y Corredora Pública. Desde mis inicios en 2016, entendí que mi trabajo va mucho más allá de una propiedad: se trata de las historias y los sueños de cada persona que confía en mí. Por eso, en 2018 fundé mi propia inmobiliaria con un objetivo claro: acompañar cada etapa de tu operación con el profesionalismo, la dedicación y la contención que una decisión tan importante requiere.',
-        icono: '🏛️',
+            ' Martillera y Corredora Pública con trayectoria desde el año 2016, Lucrecia es la fundadora y directora de la firma. Entendiendo que el mercado de bienes raíces va mucho más allá de las propiedades, centra su labor en las historias y los proyectos de vida de quienes confían en ella. Desde la apertura de su propia oficina en 2018, su objetivo ha sido acompañar cada etapa de la operación brindando el profesionalismo, la dedicación y la contención humana que una decisión tan importante requiere, liderando cada gestión con empatía y transparencia.'
     },
     {
         nombre: 'Mariana Lende',
@@ -17,8 +16,7 @@ const equipo = [
         matricula: 'Especializada en Sucesiones',
         foto: '/img/mariana.jpg', 
         descripcion:
-            'Mariana brinda asesoramiento legal especializado en procesos sucesorios, garantizando que cada operación inmobiliaria se realice con total seguridad jurídica. Su expertise permite a los clientes transitar estos procesos con tranquilidad, claridad y respaldo profesional en cada paso.',
-        icono: '⚖️',
+        'Con más de una década trabajando como abogada en la ciudad de Tandil, Mariana integra nuestro estudio, brindando asesoramiento  con responsabilidad y compromiso, destacándose por la cercanía en el trato, la búsqueda de soluciones claras y seguras para nuestros clientes. Acompañándonos en todas nuestras operaciones, aporta un servicio diferencial, brindando seguridad jurídica y soporte técnico de manera personalizada. Especializada, en el campo del Derecho Sucesorio, y Derecho Inmobiliario, es la encargada de revisión de documental y estudio de títulos correspondientes a cada operación, procurando que cada persona pueda comprender su situación y tomar decisiones con la tranquilidad de contar con un adecuado respaldo legal.'
     },
 ];
 
@@ -106,7 +104,7 @@ export default function SobreNosotros() {
                                         target.style.display = 'none';
                                         target.parentElement!.innerHTML = `
                                             <div class="w-full h-full flex flex-col items-center justify-center bg-slate-100">
-                                                <span class="text-6xl mb-3">${persona.icono}</span>
+                                                <span class="text-6xl mb-3">${persona.foto}</span>
                                                 <span class="text-slate-400 text-sm">${persona.nombre}</span>
                                             </div>
                                         `;
