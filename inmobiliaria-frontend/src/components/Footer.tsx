@@ -71,7 +71,7 @@ export default function Footer() {
                                 <span className="text-[#c5a059] text-sm shrink-0 mt-0.5">🕒</span>
                                 <div>
                                     <p className="text-white font-normal text-xs">Lun a Vie</p>
-                                    <p className="text-slate-400 text-[11px]">9:00 - 18:00 hs</p>
+                                    <p className="text-slate-400 text-[11px]">9:00 - 13:00 hs</p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-2.5">

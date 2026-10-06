@@ -250,7 +250,9 @@ export default function Home() {
             <section
                 className="py-20 text-white text-center relative bg-cover bg-center"
                 style={{
-                    backgroundImage: `linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.92)), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1500&q=80')`
+                    backgroundImage: `linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.92)), url('/img/propiedades2.png')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
                 }}
             >
                 <div className="container mx-auto px-4 max-w-3xl">

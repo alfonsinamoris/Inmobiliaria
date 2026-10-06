@@ -69,7 +69,9 @@ export default function Propiedades() {
             <div
                 className="relative py-24 text-center text-white bg-cover bg-center"
                 style={{
-                    backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.78) 0%, rgba(15, 23, 42, 0.90) 100%), url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=2000&q=80')`,
+                    backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.78) 0%, rgba(15, 23, 42, 0.90) 100%), url('/img/propiedades.jpg')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
                 }}
             >
                 <div className="container mx-auto px-4 max-w-4xl relative z-10">

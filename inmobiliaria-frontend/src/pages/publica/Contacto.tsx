@@ -122,7 +122,7 @@ export default function Contacto() {
                                 <div>
                                     <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-0.5">Horarios de Atención</p>
                                     <p className="text-sm text-[#0f172a] font-medium">Lunes a Viernes</p>
-                                    <p className="text-xs text-slate-500 font-light">9:00 a 18:00 hs</p>
+                                    <p className="text-xs text-slate-500 font-light">9:00 a 13:00 hs</p>
                                 </div>
                             </div>
                         </div>
