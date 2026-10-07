@@ -7,15 +7,22 @@ import type { FiltrosPropiedades, Propiedad } from '../../types';
 
 const CATEGORIAS = ['Casa', 'Departamento', 'Terreno', 'Duplex', 'Local'];
 
+const formatPrecio = (precio: number, moneda: string) => {
+    if (moneda === 'USD') {
+        return `U$D ${precio?.toLocaleString('es-AR')}`;
+    }
+    return `$ ${precio?.toLocaleString('es-AR')}`;
+};
+
 export default function Propiedades() {
     const [propiedades, setPropiedades] = useState<Propiedad[]>([]);
     const [loading, setLoading] = useState(true);
     const [filtros, setFiltros] = useState<FiltrosPropiedades>({});
 
-    // Inputs del formulario
     const [ubicacionInput, setUbicacionInput] = useState('');
     const [tipoInput, setTipoInput] = useState('');
     const [categoriaInput, setCategoriaInput] = useState('');
+    const [monedaInput, setMonedaInput] = useState('');
     const [precioMinInput, setPrecioMinInput] = useState('');
     const [precioMaxInput, setPrecioMaxInput] = useState('');
 
@@ -39,6 +46,7 @@ export default function Propiedades() {
         if (tipoInput) f.tipo = tipoInput;
         if (categoriaInput) f.categoria = categoriaInput;
         if (ubicacionInput) f.ubicacion = ubicacionInput;
+        if (monedaInput) f.moneda = monedaInput;
         if (precioMinInput) f.precioMin = Number(precioMinInput);
         if (precioMaxInput) f.precioMax = Number(precioMaxInput);
         setFiltros(f);
@@ -49,6 +57,7 @@ export default function Propiedades() {
         setUbicacionInput('');
         setTipoInput('');
         setCategoriaInput('');
+        setMonedaInput('');
         setPrecioMinInput('');
         setPrecioMaxInput('');
         setFiltros({});
@@ -83,21 +92,21 @@ export default function Propiedades() {
                     </h1>
                     <div className="w-12 h-0.5 bg-[#c5a059] mx-auto mb-4"></div>
                     <p className="text-slate-300 text-sm sm:text-base font-light max-w-xl mx-auto leading-relaxed">
-                        Explorá nuestras opciones de compra y alquiler en Tandil .
+                        Explorá nuestras opciones de compra y alquiler en Tandil.
                     </p>
                 </div>
             </div>
 
-            {/* BUSCADOR Y FILTROS FLOTANTES */}
+            {/* BUSCADOR */}
             <div className="container mx-auto px-4 -mt-10 relative z-20 mb-14 max-w-6xl">
                 <form
                     onSubmit={buscar}
-                    className="bg-white/95 backdrop-blur-md rounded-2xl p-6 sm:p-7 shadow-xl border border-slate-200/80 transition-all"
+                    className="bg-white/95 backdrop-blur-md rounded-2xl p-6 sm:p-7 shadow-xl border border-slate-200/80"
                 >
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
 
                         {/* Ubicación */}
-                        <div className="lg:col-span-2">
+                        <div className="lg:col-span-1">
                             <label className={labelClass}>¿Dónde buscás?</label>
                             <div className="relative">
                                 <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#946e27]">
@@ -110,7 +119,7 @@ export default function Propiedades() {
                                     type="text"
                                     value={ubicacionInput}
                                     onChange={e => setUbicacionInput(e.target.value)}
-                                    placeholder="Ej: Centro, El Cerrito, Av. España..."
+                                    placeholder="Ej: Centro, El Cerrito..."
                                     className={`${inputClass} pl-10`}
                                 />
                             </div>
@@ -137,24 +146,36 @@ export default function Propiedades() {
                             </select>
                         </div>
 
-                        {/* Rango de precio */}
+                        {/* Moneda */}
                         <div>
-                            <label className={labelClass}>Rango de precio ($)</label>
+                            <label className={labelClass}>Moneda</label>
+                            <select value={monedaInput} onChange={e => setMonedaInput(e.target.value)} className={selectClass}>
+                                <option value="">Todas</option>
+                                <option value="ARS">$ Pesos (ARS)</option>
+                                <option value="USD">U$D Dólares (USD)</option>
+                            </select>
+                        </div>
+
+                        {/* Rango de precio */}
+                        <div className="lg:col-span-2">
+                            <label className={labelClass}>
+                                Rango de precio {monedaInput === 'USD' ? '(U$D)' : '($)'}
+                            </label>
                             <div className="flex gap-2 items-center">
                                 <input
                                     type="number"
                                     value={precioMinInput}
                                     onChange={e => setPrecioMinInput(e.target.value)}
-                                    placeholder="Mín"
+                                    placeholder="Mínimo"
                                     min="0"
                                     className={inputClass}
                                 />
-                                <span className="text-slate-300 font-light">—</span>
+                                <span className="text-slate-300 font-light shrink-0">—</span>
                                 <input
                                     type="number"
                                     value={precioMaxInput}
                                     onChange={e => setPrecioMaxInput(e.target.value)}
-                                    placeholder="Máx"
+                                    placeholder="Máximo"
                                     min="0"
                                     className={inputClass}
                                 />
@@ -162,7 +183,7 @@ export default function Propiedades() {
                         </div>
                     </div>
 
-                    {/* Acciones y Conteo */}
+                    {/* Acciones */}
                     <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-100">
                         <div className="flex items-center gap-3">
                             <button
@@ -184,7 +205,6 @@ export default function Propiedades() {
                                 </button>
                             )}
                         </div>
-
                         <p className="text-xs text-slate-500 font-medium">
                             {propiedades.length} {propiedades.length === 1 ? 'propiedad encontrada' : 'propiedades encontradas'}
                         </p>
@@ -192,7 +212,7 @@ export default function Propiedades() {
                 </form>
             </div>
 
-            {/* GRILLA DE PROPIEDADES */}
+            {/* GRILLA */}
             <div className="container mx-auto px-4 pb-24 max-w-6xl flex-1">
                 {loading ? (
                     <div className="text-center py-24 text-slate-400 flex flex-col items-center justify-center gap-3">
@@ -210,28 +230,22 @@ export default function Propiedades() {
                         <p className="text-slate-500 text-xs mb-6 leading-relaxed">
                             Probá ajustando los criterios de búsqueda o limpiá los filtros aplicados.
                         </p>
-                        <button
-                            onClick={limpiar}
-                            className="bg-[#0f172a] hover:bg-[#1e293b] text-white text-xs font-semibold px-6 py-2.5 rounded-xl transition-all shadow-sm"
-                        >
+                        <button onClick={limpiar}
+                            className="bg-[#0f172a] hover:bg-[#1e293b] text-white text-xs font-semibold px-6 py-2.5 rounded-xl transition-all shadow-sm">
                             Ver todas las propiedades
                         </button>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {propiedades.map((p) => (
-                            <div
-                                key={p.id}
-                                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200/80 hover:border-slate-300 transition-all duration-300 flex flex-col group"
-                            >
+                            <div key={p.id}
+                                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200/80 hover:border-slate-300 transition-all duration-300 flex flex-col group">
+
                                 {/* Foto */}
                                 <div className="h-56 bg-slate-100 overflow-hidden relative">
                                     {p.fotos && p.fotos.length > 0 ? (
-                                        <img
-                                            src={p.fotos[0].url}
-                                            alt={p.titulo}
-                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                        />
+                                        <img src={p.fotos[0].url} alt={p.titulo}
+                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                                     ) : (
                                         <div className="w-full h-full flex flex-col items-center justify-center text-slate-400 text-sm gap-2">
                                             <svg className="w-8 h-8 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -241,18 +255,14 @@ export default function Propiedades() {
                                         </div>
                                     )}
 
-                                    {/* Badges superiores */}
                                     <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
                                         {p.categoria ? (
                                             <span className="bg-[#0f172a]/90 backdrop-blur-sm text-[#e6ca91] text-[11px] font-semibold px-2.5 py-1 rounded-full shadow-sm">
                                                 {p.categoria}
                                             </span>
                                         ) : <span></span>}
-
                                         <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm uppercase tracking-wider ${
-                                            p.tipo === 'Alquiler'
-                                                ? 'bg-blue-600 text-white'
-                                                : 'bg-emerald-600 text-white'
+                                            p.tipo === 'Alquiler' ? 'bg-blue-600 text-white' : 'bg-emerald-600 text-white'
                                         }`}>
                                             {p.tipo}
                                         </span>
@@ -277,20 +287,16 @@ export default function Propiedades() {
                                         </p>
                                     </div>
 
-                                    {/* Precio y CTA */}
                                     <div className="pt-4 border-t border-slate-100 flex items-center justify-between mt-auto">
                                         <div>
                                             <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-medium">Valor</span>
                                             <span className="font-serif font-bold text-[#0f172a] text-xl">
-                                                $ {p.precio?.toLocaleString('es-AR')}
+                                                {formatPrecio(p.precio, p.moneda || 'ARS')}
                                             </span>
                                         </div>
-                                        <Link
-                                            to={`/propiedades/${p.id}`}
-                                            className="bg-[#0f172a] hover:bg-[#1e293b] text-white text-xs font-semibold px-4 py-2 rounded-xl transition-all inline-flex items-center gap-1.5 shadow-sm"
-                                        >
-                                            Ver ficha
-                                            <span className="text-xs">→</span>
+                                        <Link to={`/propiedades/${p.id}`}
+                                            className="bg-[#0f172a] hover:bg-[#1e293b] text-white text-xs font-semibold px-4 py-2 rounded-xl transition-all inline-flex items-center gap-1.5 shadow-sm">
+                                            Ver ficha <span className="text-xs">→</span>
                                         </Link>
                                     </div>
                                 </div>

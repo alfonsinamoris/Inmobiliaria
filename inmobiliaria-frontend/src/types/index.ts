@@ -9,6 +9,7 @@ export interface Propiedad {
     titulo: string;
     descripcion: string;
     precio: number;
+    moneda?: string;
     tipo: 'Alquiler' | 'Venta';
     categoria?: string;         // ← nuevo
     ubicacion: string;
@@ -22,8 +23,9 @@ export interface PropiedadForm {
     titulo: string;
     descripcion: string;
     precio: number | '';
+    moneda: string;
     tipo: 'Alquiler' | 'Venta' | '';
-    categoria?: string;         // ← nuevo
+    categoria?: string;       
     ubicacion: string;
     destacada: boolean;
 }
@@ -35,9 +37,10 @@ export interface LoginResponse {
 
 export interface FiltrosPropiedades {
     tipo?: string;
-    categoria?: string;         // ← nuevo
+    categoria?: string;         
     ubicacion?: string;
-    precioMin?: number;         // ← nuevo
-    precioMax?: number;         // ← nuevo
+    moneda?: string;
+    precioMin?: number;         
+    precioMax?: number;         
     destacada?: boolean;
 }

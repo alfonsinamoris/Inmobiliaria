@@ -12,6 +12,8 @@ const FORM_INICIAL: PropiedadForm = {
     tipo: '',
     ubicacion: '',
     destacada: false,
+    categoria: '',
+    moneda: 'ARS',
 };
 
 export default function FormularioPropiedad() {
@@ -36,6 +38,7 @@ export default function FormularioPropiedad() {
                     ubicacion: p.ubicacion,
                     destacada: p.destacada ?? false,
                     categoria: p.categoria || '',
+                    moneda: p.moneda || 'ARS',
                 });
                 setFotosIniciales(p.fotos ?? []);
             });
@@ -150,13 +153,22 @@ export default function FormularioPropiedad() {
                                 </div>
                             </div>
 
-                            {/* Precio */}
+                            {/* Precio y moneda */}
                             <div>
                                 <p className={sectionLabel}>Precio</p>
-                                <div className="w-1/2">
-                                    <label className={labelClass}>Precio ($)</label>
-                                    <input name="precio" type="number" value={form.precio} onChange={handleChange}
-                                           placeholder="0" min="0" step="0.01" required className={inputClass} />
+                                <div className="grid grid-cols-[120px_1fr] gap-3 max-w-sm">
+                                    <div>
+                                        <label className={labelClass}>Moneda</label>
+                                        <select name="moneda" value={form.moneda} onChange={handleChange} className={inputClass}>
+                                            <option value="ARS">$ Pesos</option>
+                                            <option value="USD">U$D Dólares</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label className={labelClass}>Precio</label>
+                                        <input name="precio" type="number" value={form.precio} onChange={handleChange}
+                                               placeholder="0" min="0" step="0.01" required className={inputClass} />
+                                    </div>
                                 </div>
                             </div>
 
@@ -171,7 +183,6 @@ export default function FormularioPropiedad() {
                                             ? 'border-[#2c3e50] bg-[#2c3e50]/5'
                                             : 'border-gray-200 hover:border-gray-300'
                                     }`}>
-                                    {/* Toggle visual */}
                                     <div className={`w-10 h-6 rounded-full transition-all relative ${
                                         form.destacada ? 'bg-[#2c3e50]' : 'bg-gray-200'
                                     }`}>
