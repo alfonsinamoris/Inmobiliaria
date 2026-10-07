@@ -22,7 +22,7 @@ export default function Home() {
             <section
                 className="relative min-h-[80vh] flex items-center justify-center text-center text-white px-4 py-28 bg-cover bg-center"
                 style={{
-                    backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.72) 0%, rgba(15, 23, 42, 0.85) 100%), url('/img/home.png')`,
+                    backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.72) 0%, rgba(15, 23, 42, 0.85) 100%), url('/img/home.webp')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                 }}
