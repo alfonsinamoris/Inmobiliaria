@@ -25,6 +25,8 @@ public class Propiedad {
     @Positive(message = "El precio debe ser mayor a cero")
     private Double precio;
 
+    private String moneda; // "ARS" o "USD"
+
     @NotBlank(message = "El tipo es obligatorio")
     @Pattern(regexp = "Alquiler|Venta", message = "El tipo debe ser 'Alquiler' o 'Venta'")
     private String tipo;
@@ -56,6 +58,9 @@ public class Propiedad {
 
     public Double getPrecio() { return precio; }
     public void setPrecio(Double precio) { this.precio = precio; }
+
+    public String getMoneda() { return moneda; }
+    public void setMoneda(String moneda) { this.moneda = moneda; }
 
     public String getTipo() { return tipo; }
     public void setTipo(String tipo) { this.tipo = tipo; }

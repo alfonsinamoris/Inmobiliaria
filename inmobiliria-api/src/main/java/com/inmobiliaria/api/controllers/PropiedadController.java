@@ -68,6 +68,7 @@ public class PropiedadController {
             p.setTitulo(datos.getTitulo());
             p.setDescripcion(datos.getDescripcion());
             p.setPrecio(datos.getPrecio());
+            p.setMoneda(datos.getMoneda());
             p.setTipo(datos.getTipo());
             p.setUbicacion(datos.getUbicacion());
             p.setIndiceActualizacion(datos.getIndiceActualizacion());
