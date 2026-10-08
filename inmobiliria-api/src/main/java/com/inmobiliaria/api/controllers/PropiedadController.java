@@ -29,6 +29,7 @@ public class PropiedadController {
         @RequestParam(required = false) String tipo,
         @RequestParam(required = false) String categoria,
         @RequestParam(required = false) String ubicacion,
+        @RequestParam(required = false) String moneda,
         @RequestParam(required = false) Double precioMin,
         @RequestParam(required = false) Double precioMax,
         @RequestParam(required = false) Boolean destacada) {
@@ -39,7 +40,7 @@ public class PropiedadController {
         if (tipo == null && categoria == null && ubicacion == null && precioMin == null && precioMax == null) {
             return propiedadRepository.findAll();
         }
-        return propiedadRepository.buscar(tipo, categoria, ubicacion, precioMin, precioMax);
+        return propiedadRepository.buscar(tipo, categoria, ubicacion, moneda, precioMin, precioMax);
     }
 
     // GET /api/propiedades/{id} → una propiedad con sus fotos

@@ -24,6 +24,7 @@ public interface PropiedadRepository extends JpaRepository<Propiedad, Long> {
     List<Propiedad> buscar(@Param("tipo") String tipo,
                            @Param("categoria") String categoria,
                            @Param("ubicacion") String ubicacion,
+                           @Param("moneda") String moneda,
                            @Param("precioMin") Double precioMin,
                            @Param("precioMax") Double precioMax);
 }
