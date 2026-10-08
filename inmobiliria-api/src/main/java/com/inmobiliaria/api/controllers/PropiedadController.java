@@ -2,8 +2,10 @@ package com.inmobiliaria.api.controllers;
 
 import com.inmobiliaria.api.entities.Propiedad;
 import com.inmobiliaria.api.repositories.PropiedadRepository;
+import com.inmobiliaria.api.repositories.PropiedadSpec;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,20 +35,15 @@ public class PropiedadController {
         Double min = (precioMin != null && !precioMin.isEmpty()) ? Double.parseDouble(precioMin) : null;
         Double max = (precioMax != null && !precioMax.isEmpty()) ? Double.parseDouble(precioMax) : null;
 
-        if (tipo == null && categoria == null && ubicacion == null
-            && moneda == null && min == null && max == null) {
-            return propiedadRepository.findAll();
-        }
+        Specification<Propiedad> spec = Specification
+            .where(PropiedadSpec.conTipo(tipo))
+            .and(PropiedadSpec.conCategoria(categoria))
+            .and(PropiedadSpec.conUbicacion(ubicacion))
+            .and(PropiedadSpec.conMoneda(moneda))
+            .and(PropiedadSpec.precioMin(min))
+            .and(PropiedadSpec.precioMax(max));
 
-        // ==========================================
-        // LA SOLUCIÓN: Pasamos todo a minúsculas acá
-        // ==========================================
-        String tipoLower = (tipo != null && !tipo.isEmpty()) ? tipo.toLowerCase() : null;
-        String categoriaLower = (categoria != null && !categoria.isEmpty()) ? categoria.toLowerCase() : null;
-        String ubicacionLower = (ubicacion != null && !ubicacion.isEmpty()) ? ubicacion.toLowerCase() : null;
-        String monedaLower = (moneda != null && !moneda.isEmpty()) ? moneda.toLowerCase() : null;
-
-        return propiedadRepository.buscar(tipoLower, categoriaLower, ubicacionLower, monedaLower, min, max);
+        return propiedadRepository.findAll(spec);
     }
 
     // GET /api/propiedades/{id} → una propiedad con sus fotos
