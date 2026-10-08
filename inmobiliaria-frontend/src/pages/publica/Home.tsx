@@ -85,7 +85,7 @@ export default function Home() {
                                 titulo: 'ALQUILERES',
                                 desc: 'Encontrá tu próximo hogar entre nuestras propiedades seleccionadas para alquiler en Tandil con contratos transparentes.',
                                 linkText: 'Ver disponibles',
-                                href: '/propiedades?tipo=Alquiler'
+                                href: '/Propiedades?tipo=Alquiler'
                             },
                             {
                                 icon: (
