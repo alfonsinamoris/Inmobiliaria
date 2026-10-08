@@ -19,6 +19,7 @@ public interface PropiedadRepository extends JpaRepository<Propiedad, Long> {
         "(:tipo IS NULL OR LOWER(p.tipo) = LOWER(:tipo)) AND " +
         "(:categoria IS NULL OR LOWER(p.categoria) = LOWER(:categoria)) AND " +
         "(:ubicacion IS NULL OR LOWER(p.ubicacion) LIKE LOWER(CONCAT('%', :ubicacion, '%'))) AND " +
+        "(:moneda IS NULL OR LOWER(p.moneda) = LOWER(:moneda)) AND " +
         "(:precioMin IS NULL OR p.precio >= :precioMin) AND " +
         "(:precioMax IS NULL OR p.precio <= :precioMax)")
     List<Propiedad> buscar(@Param("tipo") String tipo,
