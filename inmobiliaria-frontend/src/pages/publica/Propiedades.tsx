@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { getPropiedades } from '../../api/Propiedades';
 import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
@@ -15,6 +15,7 @@ const formatPrecio = (precio: number, moneda: string) => {
 };
 
 export default function Propiedades() {
+    const [searchParams] = useSearchParams();
     const [propiedades, setPropiedades] = useState<Propiedad[]>([]);
     const [loading, setLoading] = useState(true);
     const [filtros, setFiltros] = useState<FiltrosPropiedades>({});
@@ -38,7 +39,17 @@ export default function Propiedades() {
         }
     };
 
-    useEffect(() => { cargar(); }, []);
+    // Al cargar la página, lee el parámetro ?tipo= de la URL (viene del Home)
+    useEffect(() => {
+        const tipo = searchParams.get('tipo') || '';
+        if (tipo) {
+            setTipoInput(tipo);
+            setFiltros({ tipo });
+            cargar({ tipo });
+        } else {
+            cargar();
+        }
+    }, []);
 
     const buscar = (e: React.FormEvent) => {
         e.preventDefault();
@@ -244,7 +255,7 @@ export default function Propiedades() {
                                 {/* Foto */}
                                 <div className="h-56 bg-slate-100 overflow-hidden relative">
                                     {p.fotos && p.fotos.length > 0 ? (
-                                        <img src={p.fotos[0].url} alt={p.titulo}
+                                        <img src={p.fotos[0].url} alt={p.titulo} loading="lazy"
                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                                     ) : (
                                         <div className="w-full h-full flex flex-col items-center justify-center text-slate-400 text-sm gap-2">
