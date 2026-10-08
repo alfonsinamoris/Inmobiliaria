@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { eliminarPropiedad, getPropiedades } from '../../api/Propiedades';
 import { useAuth } from '../../context/AuthContext';
-import { getPropiedades, eliminarPropiedad } from '../../api/Propiedades';
 import type { Propiedad } from '../../types';
 
 export default function Dashboard() {
@@ -114,7 +114,7 @@ export default function Dashboard() {
                         </span>
                                         </td>
                                         <td className="px-4 py-4 font-semibold text-[#2c3e50] text-sm" style={{ fontFamily: 'Oswald, sans-serif' }}>
-                                            {p.precio ? `$ ${p.precio.toLocaleString('es-AR')}` : '—'}
+                                             {p.precio ? `${p.moneda === 'USD' ? 'U$D' : '$'} ${p.precio.toLocaleString('es-AR')}` : '—'}
                                         </td>
                                         <td className="px-4 py-4">
                                             <div className="flex gap-2">
