@@ -16,31 +16,37 @@ public class PropiedadController {
     @Autowired
     private PropiedadRepository propiedadRepository;
 
-    // ==========================================
-    //   ENDPOINTS PÚBLICOS (sin token)
-    // ==========================================
-
-    // GET /api/propiedades → lista todas
-    // GET /api/propiedades?tipo=Alquiler → filtra por tipo
-    // GET /api/propiedades?ubicacion=tandil → filtra por ubicación
-    // GET /api/propiedades?tipo=Alquiler&ubicacion=tandil → ambos
     @GetMapping
     public List<Propiedad> listar(
         @RequestParam(required = false) String tipo,
         @RequestParam(required = false) String categoria,
         @RequestParam(required = false) String ubicacion,
         @RequestParam(required = false) String moneda,
-        @RequestParam(required = false) Double precioMin,
-        @RequestParam(required = false) Double precioMax,
+        @RequestParam(required = false) String precioMin,
+        @RequestParam(required = false) String precioMax,
         @RequestParam(required = false) Boolean destacada) {
 
         if (destacada != null && destacada) {
             return propiedadRepository.findByDestacadaTrue();
         }
-        if (tipo == null && categoria == null && ubicacion == null && precioMin == null && precioMax == null) {
+
+        Double min = (precioMin != null && !precioMin.isEmpty()) ? Double.parseDouble(precioMin) : null;
+        Double max = (precioMax != null && !precioMax.isEmpty()) ? Double.parseDouble(precioMax) : null;
+
+        if (tipo == null && categoria == null && ubicacion == null
+            && moneda == null && min == null && max == null) {
             return propiedadRepository.findAll();
         }
-        return propiedadRepository.buscar(tipo, categoria, ubicacion, moneda, precioMin, precioMax);
+
+        // ==========================================
+        // LA SOLUCIÓN: Pasamos todo a minúsculas acá
+        // ==========================================
+        String tipoLower = (tipo != null && !tipo.isEmpty()) ? tipo.toLowerCase() : null;
+        String categoriaLower = (categoria != null && !categoria.isEmpty()) ? categoria.toLowerCase() : null;
+        String ubicacionLower = (ubicacion != null && !ubicacion.isEmpty()) ? ubicacion.toLowerCase() : null;
+        String monedaLower = (moneda != null && !moneda.isEmpty()) ? moneda.toLowerCase() : null;
+
+        return propiedadRepository.buscar(tipoLower, categoriaLower, ubicacionLower, monedaLower, min, max);
     }
 
     // GET /api/propiedades/{id} → una propiedad con sus fotos
