@@ -5,7 +5,7 @@ import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
 import type { FiltrosPropiedades, Propiedad } from '../../types';
 
-const CATEGORIAS = ['Casa', 'Departamento', 'Terreno', 'Duplex', 'Local'];
+const CATEGORIAS = ['Casa', 'Departamento', 'Terreno', 'Duplex', 'Local', 'Galpon', 'Fondo de comercio'];
 
 const formatPrecio = (precio: number, moneda: string) => {
     if (moneda === 'USD') {
