@@ -131,7 +131,7 @@ export default function DetallePropiedad() {
                         {/* Descripción y Especificaciones */}
                         <div className="bg-white rounded-3xl p-8 sm:p-9 shadow-sm border border-slate-200/80">
                             <span className="text-[11px] uppercase tracking-widest text-[#946e27] font-semibold block mb-2">
-                                Características y Memoria Descriptiva
+                                Características 
                             </span>
                             <h2 className="text-2xl font-serif text-[#0f172a] mb-5 font-normal">
                                 Acerca de esta propiedad
