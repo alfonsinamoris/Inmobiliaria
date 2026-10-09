@@ -212,8 +212,7 @@ export default function Home() {
                                             <div>
                                                 <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-medium">Valor</span>
                                                 <span className="font-serif font-bold text-[#0f172a] text-xl">
-                                                    $ {p.precio?.toLocaleString('es-AR')}
-                                                </span>
+                                                {p.moneda === 'USD' ? 'USD' : '$'} {p.precio.toLocaleString('es-AR')}                                                </span>
                                             </div>
                                             <Link
                                                 to={`/propiedades/${p.id}`}

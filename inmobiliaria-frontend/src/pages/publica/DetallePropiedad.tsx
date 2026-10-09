@@ -201,7 +201,7 @@ export default function DetallePropiedad() {
                                 </span>
                                 <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
                                     <span className="font-serif font-bold text-[#0f172a] text-2xl sm:text-3xl xl:text-4xl tracking-tight whitespace-nowrap">
-                                        $&nbsp;{propiedad.precio?.toLocaleString('es-AR')}
+                                         {propiedad.moneda === 'USD' ? 'USD' : '$'} {propiedad.precio.toLocaleString('es-AR')}
                                     </span>
                                     {propiedad.tipo === 'Alquiler' && (
                                         <span className="text-xs sm:text-sm text-slate-500 font-light whitespace-nowrap">
