@@ -1,6 +1,7 @@
 package com.inmobiliaria.api.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +32,11 @@ public class SecurityConfig {
 
     @Autowired
     private JwtAuthFilter jwtAuthFilter;
+    @Value("${ADMIN_USERNAME}")
+    private String adminUsername;
 
+    @Value("${ADMIN_PASSWORD}")
+    private String adminPassword;
 
     @Bean
     public FilterRegistrationBean<CorsFilter> customCorsFilter() {
@@ -82,8 +87,8 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails admin = User.withUsername("admin")
-            .password(passwordEncoder().encode("1234"))
+        UserDetails admin = User.withUsername(adminUsername)
+            .password(passwordEncoder().encode(adminPassword))
             .roles("ADMIN")
             .build();
         return new InMemoryUserDetailsManager(admin);
